@@ -3,18 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/drawable/background_box.xml" value="0.2915" />
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/drawable/bluebg.xml" value="0.2915" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/drawable/button_steelblue.xml" value="0.2295" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/drawable/input.xml" value="0.2295" />
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/drawable/lock.xml" value="0.1935" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/drawable/person.xml" value="0.2295" />
-        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/activity_login_page.xml" value="0.358695652173913" />
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/activity_login_page.xml" value="0.22" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/activity_register.xml" value="0.358695652173913" />
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/activity_user_profile.xml" value="0.37083333333333335" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/header.xml" value="0.33" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/main_activity.xml" value="0.3625" />
         <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/layout/main_fragment.xml" value="0.3625" />
+<<<<<<< HEAD
         <entry key="..\:/Users/jackh/Y1S3/mobileTracing/app/src/main/res/drawable/input.xml" value="0.14" />
         <entry key="..\:/Users/jackh/Y1S3/mobileTracing/app/src/main/res/layout/activity_login_page.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/jackh/Y1S3/mobileTracing/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
+=======
+        <entry key="..\:/Code/ForwardSchool/Semester4/Trace/app/src/main/res/menu/menubar.xml" value="0.5" />
+>>>>>>> bf349d473583187bbe46dfe3c8942e0489bad809
       </map>
     </option>
   </component>
