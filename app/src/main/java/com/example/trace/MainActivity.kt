@@ -7,7 +7,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_page)
-        this.supportActionBar?.hide()
+        setContentView(R.layout.activity_user_profile)
+//        this.supportActionBar?.hide()
     }
 }

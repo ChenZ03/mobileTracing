@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/user"
+            android:title="User Profile" />
+
+        <item
+            android:id="@+id/checkin"
+            android:icon="@drawable/camera"
+            android:title="Check in" />
+
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/location"
+            android:title="History" />
+
+        <item
+            android:id="@+id/map"
+            android:icon="@drawable/map"
+            android:title="Hotspot" />
+
+        <item
+            android:id="@+id/faq"
+            android:icon="@drawable/faq"
+            android:title="FAQ" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+    </group>
+
+
+</menu>
