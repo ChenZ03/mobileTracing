@@ -8,4 +8,26 @@
     <string name="sign_up"><u>Sign Up !</u></string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="today"><u>Today</u></string>
+    <string-array name="history">
+        <item>Genting</item>
+        <item>Jakarta</item>
+        <item>Bekasi</item>
+        <item>Tangerang</item>
+        <item>Bandung</item>
+    </string-array>
+    <string-array name="history_interactions">
+        <item>10</item>
+        <item>7</item>
+        <item>5</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="history_time">
+        <item>19 Apr 2022 ~ 2:10pm</item>
+        <item>19 Apr 2022 ~ 1:10pm</item>
+        <item>19 Apr 2022 ~ 12:10pm</item>
+        <item>19 Apr 2022 ~ 11:10am</item>
+        <item>19 Apr 2022 ~ 10:10am</item>
+    </string-array>
 </resources>

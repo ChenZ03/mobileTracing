@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".UserProfile"
+    tools:context=".Profile"
     >
 
     <com.google.android.material.navigation.NavigationView
@@ -144,7 +144,7 @@
 
                     <ImageView
                         android:layout_width="110dp"
-                        android:layout_height="110dp"
+                        android:layout_height="120dp"
                         android:background="@drawable/qr"
                         android:layout_marginStart="10dp"
                         android:layout_gravity="center_vertical" />
