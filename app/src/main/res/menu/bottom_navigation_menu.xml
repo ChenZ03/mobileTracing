@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        />
+
+    <item
+        android:id="@+id/nav_history"
+        android:title="History"
+        android:icon="@drawable/location"
+        />
+
+    <item
+        android:id="@+id/nav_scan"
+        android:title="Scan"
+        android:icon="@drawable/ic_baseline_qr_code_scanner_24"
+        />
+
+    <item
+        android:id="@+id/nav_hotspot"
+        android:title="Hotspot"
+        android:icon="@drawable/map"
+        />
+
+    <item
+        android:id="@+id/nav_faq"
+        android:title="FAQ"
+        android:icon="@drawable/faq"
+        />
+</menu>
