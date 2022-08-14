@@ -1,10 +1,52 @@
 package com.example.contacttracingproject
 
+import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.print.PrintHelper.ORIENTATION_PORTRAIT
+import com.example.contacttracingproject.repository.HistoryRepository
+import com.example.contacttracingproject.roomDatabase.HistoryDatabase
+import com.example.contacttracingproject.viewModel.HistoryViewModel
+import com.example.contacttracingproject.viewModel.HistoryViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanOptions
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var historyViewModel: HistoryViewModel
+
+    val zxingQRCode = registerForActivityResult(ScanContract()){
+            result ->
+        val intent = intent
+        if(result.contents != null){
+            Toast.makeText(applicationContext, "Scanned", Toast.LENGTH_LONG).show()
+
+            val icNumber = intent.getStringExtra("icNumber").toString()
+            val location = result.contents.toString().split(",").toMutableList()[0]
+
+            val datetime = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " ~ " + LocalTime.now().format(
+                DateTimeFormatter.ofPattern("HH:mm"))
+
+            val history = com.example.contacttracingproject.models.History(null, icNumber, location, datetime)
+
+            val dao = HistoryDatabase.getInstance(this).historyDao()
+
+            val repository = HistoryRepository(dao)
+
+            val viewModelFactory = HistoryViewModelFactory(repository)
+
+            historyViewModel = ViewModelProvider(this, viewModelFactory).get(HistoryViewModel::class.java)
+
+            historyViewModel.insert(history)
+        }
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_home, History.newInstance()).commit()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -33,10 +75,17 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_scan -> {
-                    //navController.navigate(R.id.scanFragment)
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_activity_home, Scanner.newInstance())
-                        .commit()
+                    val options = ScanOptions()
+                    options.apply {
+                        setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+                        setPrompt("Scan Location QRCODE")
+                        setCameraId(0)
+                        setBeepEnabled(true)
+                        setBarcodeImageEnabled(true)
+                        setOrientationLocked(true)
+                        setTorchEnabled(true)
+                    }
+                    zxingQRCode.launch(options)
                     true
                 }
                 R.id.nav_hotspot -> {

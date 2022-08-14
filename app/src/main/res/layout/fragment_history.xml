@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/mainContainer"
-    tools:context=".History"
-    android:background="@drawable/background_down">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-    <!--    History fragment onClick history Icon in BottomNavigation-->
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainContainer"
+        tools:context=".History"
+        android:background="@drawable/background_down">
+
+        <!--    History fragment onClick history Icon in BottomNavigation-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="0dp">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/history_text"
-                android:layout_marginTop="20dp"
-                android:text="@string/history"
-                android:textSize="20sp"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:layout_marginBottom="0dp">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/location_view"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/history_text"
                     android:layout_marginTop="20dp"
-                    tools:listitem="@layout/history_item" />
-            </ScrollView>
+                    android:text="@string/history"
+                    android:textSize="20sp"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp">
 
-</FrameLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/location_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        tools:listitem="@layout/history_item" />
+                </ScrollView>
+
+            </LinearLayout>
+
+    </FrameLayout>
+</layout>

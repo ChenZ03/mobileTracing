@@ -8,8 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "history_table")
 data class History(
     @PrimaryKey(autoGenerate = true)
-    @NonNull
-    val id: Int,
+    val id: Int? = null,
 
     @NonNull
     @ColumnInfo(name="icNumber")
@@ -23,7 +22,4 @@ data class History(
     @ColumnInfo(name = "dateTime")
     val dateTime: String,
 
-    @NonNull
-    @ColumnInfo(name = "interaction")
-    val interaction: Int
 )
