@@ -8,22 +8,22 @@ import com.example.contacttracingproject.dao.UserDao
 import com.example.contacttracingproject.models.User
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
-abstract class roomDatabase : RoomDatabase() {
+abstract class userDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
         @Volatile
-        private var INSTANCE: roomDatabase? = null
+        private var INSTANCE: userDatabase? = null
 
-        fun getDatabase(
+        fun getInstance(
             context: Context,
-        ): roomDatabase {
+        ): userDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    roomDatabase::class.java,
+                    userDatabase::class.java,
                     "user_database"
                 )
                     .fallbackToDestructiveMigration()

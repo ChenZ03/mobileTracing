@@ -8,13 +8,18 @@ class UserRepository(private val userDao: UserDao) {
 
     fun getUser(icNumber : String) = userDao.getUser(icNumber)
 
-    @WorkerThread
-    fun insert(user: User) = userDao.insert(user)
+    fun registerUser(user : User){
+        return userDao.insert(user)
+    }
 
     fun update(user: User) = userDao.update(user)
 
     fun delete(user: User) = userDao.delete(user)
 
-    fun loginUser(icNumber : String, password : String) = userDao.loginUser(icNumber, password)
+    suspend fun loginUser(icNumber : String, password : String) : User {
+        return userDao.loginUser(icNumber, password)
+    }
+
+
 
 }

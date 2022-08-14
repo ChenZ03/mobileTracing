@@ -1,4 +1,4 @@
-package com.example.contacttracingproject
+package com.example.contacttracingproject.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,13 +6,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contacttracingproject.R
 
 class   HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     var addressData = arrayOf("Jelutong", "Penang", "East Malaysia", "West Malaysia", "SomeWhere")
     var dateTimeData = arrayOf("April 1st, 2022 ~ 11:00AM", "April 1st, 2022 ~ 10:00AM", "April 1st, 2022 ~ 9:00AM", "April 1st, 2022 ~ 8:30AM", "April 1st, 2022 ~ 8:00AM")
     var interactionData = arrayOf(7,4,2,6,3)
-    var imgData = arrayOf(R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.red, R.drawable.orange)
+    var imgData = arrayOf(
+        R.drawable.red,
+        R.drawable.orange,
+        R.drawable.yellow,
+        R.drawable.red,
+        R.drawable.orange
+    )
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var address: TextView

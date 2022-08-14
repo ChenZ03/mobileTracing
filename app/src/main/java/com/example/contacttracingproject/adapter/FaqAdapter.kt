@@ -1,10 +1,11 @@
-package com.example.contacttracingproject
+package com.example.contacttracingproject.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contacttracingproject.R
 
 class FaqAdapter : RecyclerView.Adapter<FaqAdapter.ViewHolder>() {
 

@@ -23,5 +23,5 @@ interface UserDao {
 
     //login
     @Query("SELECT * FROM user_table WHERE icNumber = :icNumber AND password = :password")
-    fun loginUser(icNumber : String, password : String): Flow<User>
+    suspend fun loginUser(icNumber : String, password : String): User
 }
