@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HistoryDao {
-    @Query("SELECT * FROM history")
+    @Query("SELECT * FROM history_table")
     fun getAll(): Flow<List<History>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
