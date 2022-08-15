@@ -35,6 +35,12 @@ class Profile : Fragment() {
             startActivity(intent)
         }
 
+        val editProfile : ImageView = itemView.findViewById(R.id.editProfile)
+        editProfile.setOnClickListener{
+            val intent = Intent(activity, EditProfile::class.java)
+            startActivity(intent)
+        }
+
         val logout : Button = itemView.findViewById(R.id.logout)
         logout.setOnClickListener{
             val intent = Intent(activity, Register::class.java)

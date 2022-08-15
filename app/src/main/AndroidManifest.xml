@@ -18,9 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ContactTracingProject">
         <activity
-            android:name=".Scanner2"
-            android:exported="false" />
-        <activity
             android:name=".Checkin"
             android:exported="false" />
         <activity
@@ -34,6 +31,9 @@
             android:exported="false" />
         <activity
             android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
             android:exported="false" />
         <activity
             android:name=".Login"

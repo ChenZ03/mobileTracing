@@ -56,13 +56,28 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/user_details"
-                            android:textColor="#0a7ed2"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/inter_bold" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/user_details"
+                                android:textColor="#0a7ed2"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/inter_bold" />
+
+                            <ImageView
+                                android:id="@+id/editProfile"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/edit_icon" />
+
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"

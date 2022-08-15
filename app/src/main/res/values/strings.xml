@@ -38,4 +38,9 @@
     <string name="second_dose"><u>Second Dose</u></string>
     <string name="booster_dose"><u>Booster Dose</u></string>
     <string name="history">History</string>
+    <string name="editProfile">Edit User Details</string>
+    <string name="editName">Name</string>
+    <string name="editPhone">Phone Number</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
