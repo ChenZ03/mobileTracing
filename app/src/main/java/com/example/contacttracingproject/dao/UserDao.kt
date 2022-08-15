@@ -19,7 +19,7 @@ interface UserDao {
     fun getAll(): Flow<List<User>>
 
     @Query("SELECT * FROM user_table WHERE icNumber = :icNumber")
-    fun getUser(icNumber : String): Flow<User>
+    suspend fun getUser(icNumber : String): User
 
     //login
     @Query("SELECT * FROM user_table WHERE icNumber = :icNumber AND password = :password")

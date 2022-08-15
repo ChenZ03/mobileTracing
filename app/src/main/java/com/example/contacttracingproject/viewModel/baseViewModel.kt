@@ -5,6 +5,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -46,4 +47,5 @@ abstract class BaseViewModel(): ViewModel(),
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }
+
 }

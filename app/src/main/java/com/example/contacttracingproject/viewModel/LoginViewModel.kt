@@ -1,5 +1,6 @@
 package com.example.contacttracingproject.viewModel
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.contacttracingproject.repository.UserRepository
 import kotlinx.coroutines.launch
@@ -17,6 +18,7 @@ class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
                 val user = repository.loginUser(icNumber.value.toString(), password.value.toString())
                 if(user != null){
 //                    user.value = user
+                    icNumber.value = user.icNumber
                     _finish.value = true
                 }else{
                     _errorToast.emit("Login unsuccessful. Please retry.")
