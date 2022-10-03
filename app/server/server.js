@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 
 //Check DB Connection
-mongoose.connect(`${DB_URL}`);
+mongoose.connect(`mongodb+srv://pegion:pigeonflyfly@cluster0.wbndh.mongodb.net/mobileTracing?retryWrites=true&w=majority`);
 mongoose.connection.once('open', () => console.log('Connected to MongoDB'));
 
 app.use(cors());

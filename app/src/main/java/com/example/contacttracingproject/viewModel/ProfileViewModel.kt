@@ -13,9 +13,9 @@ class ProfileViewModel(val repository: UserRepository) : BaseViewModel() {
     fun getUser(icNumber1: String) {
         viewModelScope.launch {
             var user = repository.getUser(icNumber1)
-            icNumber.value = user.icNumber
-            username.value = user.username
-            phone.value = user.phone
+//            icNumber.value = user.icNumber
+//            username.value = user.username
+//            phone.value = user.phone
             getUser(icNumber1)
         }
     }

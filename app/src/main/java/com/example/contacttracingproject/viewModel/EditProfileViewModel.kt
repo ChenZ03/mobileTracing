@@ -1,11 +1,9 @@
 package com.example.contacttracingproject.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.contacttracingproject.EditProfile
-import com.example.contacttracingproject.models.User
+import com.example.contacttracingproject.data.UserData
 import com.example.contacttracingproject.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -16,8 +14,9 @@ class EditProfileViewModel(val repository: UserRepository) : BaseViewModel() {
         viewModelScope.launch {
             val user = repository.getUser(icNumber1)
             if(user != null) {
-                val updatedUser = User(user.id, user.icNumber, user.password, newName, 0, newPhone)
-                updateUser(updatedUser)
+                val updatedUser = user.body()
+                    ?.let { UserData(it._id, it.icNumber, it.password, newName, it.password, 0) }
+//                updateUser(updatedUser)
 //                _errorToast.emit("Edit Success")
                 _finish.value = true
             }else{
@@ -27,14 +26,14 @@ class EditProfileViewModel(val repository: UserRepository) : BaseViewModel() {
         }
     }
 
-    private fun updateUser(user: User): Job =
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.update(user)
-        }
-    private fun getUser(icNumber1: String): Job =
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getUser(icNumber.value.toString())
-        }
+//    private fun updateUser(user: UserData?): Job =
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.update(user)
+//        }
+//    private fun getUser(icNumber1: String): Job =
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.getUser(icNumber.value.toString())
+//        }
 }
 
 class EditProfileViewModelFactory(

@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import com.example.contacttracingproject.`interface`.UserRetrofit
+import com.example.contacttracingproject.`object`.baseApi
 import com.example.contacttracingproject.databinding.ActivityEditprofileBinding
 import com.example.contacttracingproject.repository.UserRepository
 import com.example.contacttracingproject.roomDatabase.userDatabase
@@ -30,8 +32,8 @@ class EditProfile : AppCompatActivity(){
         val intent = getIntent()
         icNumber = intent.getStringExtra("icNumber").toString()
 
-        val dao = userDatabase.getInstance(application).userDao()
-        val repository = UserRepository(dao)
+        val userRetrofit = baseApi.getInstance().create(UserRetrofit::class.java)
+        val repository = UserRepository(userRetrofit)
         val factory = EditProfileViewModelFactory(repository)
 
         editProfileViewModel = ViewModelProvider(this, factory).get(EditProfileViewModel::class.java)

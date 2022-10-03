@@ -8,7 +8,8 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import com.example.contacttracingproject.application.BaseApplication
+import com.example.contacttracingproject.`interface`.UserRetrofit
+import com.example.contacttracingproject.`object`.baseApi
 import com.example.contacttracingproject.databinding.ActivityLoginBinding
 import com.example.contacttracingproject.repository.UserRepository
 import com.example.contacttracingproject.roomDatabase.userDatabase
@@ -26,8 +27,8 @@ class Login : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dao = userDatabase.getInstance(application).userDao()
-        val repository = UserRepository(dao)
+        val userRetrofit = baseApi.getInstance().create(UserRetrofit::class.java)
+        val repository = UserRepository(userRetrofit)
         val factory = LoginViewModelFactory(repository)
 
         loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)

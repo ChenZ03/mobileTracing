@@ -17,8 +17,7 @@ class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
             viewModelScope.launch {
                 val user = repository.loginUser(icNumber.value.toString(), password.value.toString())
                 if(user != null){
-//                    user.value = user
-                    icNumber.value = user.icNumber
+                    icNumber.value = user.body()?.icNumber
                     _finish.value = true
                 }else{
                     _errorToast.emit("Login unsuccessful. Please retry.")

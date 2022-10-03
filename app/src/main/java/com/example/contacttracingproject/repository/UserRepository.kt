@@ -1,28 +1,24 @@
 package com.example.contacttracingproject.repository
 
-import androidx.annotation.WorkerThread
-import com.example.contacttracingproject.dao.UserDao
-import com.example.contacttracingproject.models.User
-import kotlinx.coroutines.flow.Flow
 
-class UserRepository(private val userDao: UserDao) {
+import com.example.contacttracingproject.`interface`.UserRetrofit
+import com.example.contacttracingproject.data.UserData
+import retrofit2.Response
 
-    suspend fun getUser(icNumber : String): User {
-        return userDao.getUser(icNumber)
+class UserRepository(private val userRetrofit: UserRetrofit) {
+
+    suspend fun getUser(icNumber : String): Response<UserData> {
+        return userRetrofit.getUser(icNumber)
     }
 
-    fun registerUser(user : User){
-        return userDao.insert(user)
+    suspend fun registerUser(icNumber: String, password: String): Response<UserData> {
+        return userRetrofit.createUser(icNumber, password)
     }
 
-    fun update(user: User) = userDao.update(user)
+    suspend fun updateUser(user: UserData, id: String) = userRetrofit.updateUser(user, id)
 
-    fun delete(user: User) = userDao.delete(user)
-
-    suspend fun loginUser(icNumber: String, password: String) : User {
-        return userDao.loginUser(icNumber, password)
+    suspend fun loginUser(icNumber: String, password: String) : Response<UserData> {
+        return userRetrofit.login(icNumber, password)
     }
-
-
 
 }

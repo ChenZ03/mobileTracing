@@ -5,10 +5,9 @@ const User = require('../models/user');
 
 // REGISTER
 router.post('/register', (req, res) => {
-  const {icNumber, password, password2} = req.body;
+  const {icNumber, password} = req.body;
   if (password.length === 0) return res.status(400).json({msg: 'Please input a password'});
   if (password.length < 8) return res.status(400).json({msg: 'Password should be more than 8 characters'});
-  if (password !== password2) return res.status(400).json({msg: 'Passwords do not match'});
 
   User.findOne({icNumber}, (err, exists) => {
     if (exists) {

@@ -1,6 +1,6 @@
 package com.example.contacttracingproject.data
 
-data class User(
+data class UserData(
     val _id: String,
     val username: String,
     val icNumber: String,

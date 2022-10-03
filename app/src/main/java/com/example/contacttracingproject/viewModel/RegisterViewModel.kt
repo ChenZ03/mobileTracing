@@ -3,6 +3,7 @@ package com.example.contacttracingproject.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.contacttracingproject.data.UserData
 import com.example.contacttracingproject.models.User
 import com.example.contacttracingproject.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
@@ -20,8 +21,7 @@ class RegisterViewModel(val repository: UserRepository) : BaseViewModel() {
             viewModelScope.launch {
                 val user = repository.loginUser(icNumber.value.toString(), password.value.toString())
                 if(user == null) {
-                    val newUser = User(0,icNumber.value.toString(), password.value.toString(), icNumber.value.toString(), 0, "")
-                    signup(newUser)
+                    signup(icNumber.value.toString(), password.value.toString())
                     _errorToast.emit("Register Success")
                     _finish.value = true
                 }else{
@@ -32,9 +32,9 @@ class RegisterViewModel(val repository: UserRepository) : BaseViewModel() {
         }
     }
 
-    private fun signup(user: User): Job =
+    private fun signup(icNumber: String, password: String): Job =
         viewModelScope.launch(Dispatchers.IO) {
-            repository.registerUser(user)
+            repository.registerUser(icNumber, password)
         }
 }
 

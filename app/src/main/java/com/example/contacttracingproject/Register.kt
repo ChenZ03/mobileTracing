@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import com.example.contacttracingproject.`interface`.UserRetrofit
+import com.example.contacttracingproject.`object`.baseApi
 import com.example.contacttracingproject.databinding.ActivityRegisterBinding
 import com.example.contacttracingproject.repository.UserRepository
 import com.example.contacttracingproject.roomDatabase.userDatabase
@@ -27,8 +29,8 @@ class Register : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dao = userDatabase.getInstance(application).userDao()
-        val repository = UserRepository(dao)
+        val userRetrofit = baseApi.getInstance().create(UserRetrofit::class.java)
+        val repository = UserRepository(userRetrofit)
         val factory = RegisterViewModelFactory(repository)
 
         registerViewModel = ViewModelProvider(this, factory).get(RegisterViewModel::class.java)

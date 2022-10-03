@@ -45,9 +45,9 @@ class Profile : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
-        val profileViewModel: ProfileViewModel by viewModels {
-            ProfileViewModelFactory((activity?.application as BaseApplication).repository)
-        }
+//        val profileViewModel: ProfileViewModel by viewModels {
+//            ProfileViewModelFactory
+//        }
 
         binding.viewModel = profileViewModel
 
