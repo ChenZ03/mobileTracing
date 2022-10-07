@@ -9,6 +9,6 @@ import com.example.contacttracingproject.roomDatabase.HistoryDatabase
 
 class BaseApplication: Application() {
     val historyDatabase: HistoryDatabase by lazy { HistoryDatabase.getInstance(this)}
-    val historyRepository: HistoryRepository by lazy { HistoryRepository(historyDatabase.historyDao()) }
+//    val historyRepository: HistoryRepository by lazy { HistoryRepository(historyDatabase.historyDao()) }
 }
 

@@ -38,7 +38,6 @@
             android:ems="10"
             android:hint="@string/ic_number"
             android:inputType="text"
-            android:text="@={viewModel.icNumber}"
 
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -59,7 +58,6 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:text="@={viewModel.password}"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textSize="12sp"

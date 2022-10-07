@@ -4,12 +4,13 @@ import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.print.PrintHelper.ORIENTATION_PORTRAIT
+import com.example.contacttracingproject.data.BaseResponse
 import com.example.contacttracingproject.repository.HistoryRepository
 import com.example.contacttracingproject.roomDatabase.HistoryDatabase
 import com.example.contacttracingproject.viewModel.HistoryViewModel
-import com.example.contacttracingproject.viewModel.HistoryViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
@@ -18,7 +19,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var historyViewModel: HistoryViewModel
+    private val historyViewModel by viewModels<HistoryViewModel>()
 
     val zxingQRCode = registerForActivityResult(ScanContract()){
             result ->
@@ -32,17 +33,15 @@ class HomeActivity : AppCompatActivity() {
             val datetime = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " ~ " + LocalTime.now().format(
                 DateTimeFormatter.ofPattern("HH:mm"))
 
-            val history = com.example.contacttracingproject.models.History(null, icNumber, location, datetime)
+            historyViewModel.insertHistory(icNumber, location, datetime)
 
-            val dao = HistoryDatabase.getInstance(this).historyDao()
-
-            val repository = HistoryRepository(dao)
-
-            val viewModelFactory = HistoryViewModelFactory(repository)
-
-            historyViewModel = ViewModelProvider(this, viewModelFactory).get(HistoryViewModel::class.java)
-
-            historyViewModel.insert(history)
+            historyViewModel.historyResult.observe(this){
+                when(it){
+                    is BaseResponse.Success -> {
+                        Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
         }
         supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_home, History.newInstance()).commit()
     }

@@ -4,9 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.contacttracingproject.HomeActivity
-import com.example.contacttracingproject.Scanner
-import com.example.contacttracingproject.application.BaseApplication
 import com.example.contacttracingproject.dao.HistoryDao
 import com.example.contacttracingproject.models.History
 

@@ -1,22 +1,29 @@
 package com.example.contacttracingproject.`interface`
 
-import retrofit2.Response
+import com.example.contacttracingproject.`object`.RetrofitHelper
+import com.example.contacttracingproject.data.EditRequest
+import com.example.contacttracingproject.data.LoginRequest
 import retrofit2.http.*
-import com.example.contacttracingproject.data.UserData
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.contacttracingproject.data.UserResponse
+import retrofit2.Response
 
 interface UserRetrofit {
-    @GET("/user")
-    suspend fun getUser(@Query("id") id: String): Response<UserData>
+    @GET("/profile/{ic}")
+    suspend fun getUser(@Path("ic") ic: String): Response<UserResponse>
 
     @POST("/auth/register")
-    suspend fun createUser(@Body icNumber: String, password: String): Response<UserData>
+    suspend fun createUser(@Body loginRequest: LoginRequest): Response<UserResponse>
 
-    @PUT("/user")
-    suspend fun updateUser(@Body user: UserData, id: String): Response<UserData>
+    @PUT("/profile/{ic}")
+    suspend fun editProfile(@Path("ic") ic: String, @Body editRequest: EditRequest): Response<UserResponse>
 
     @POST("/auth/login")
-    suspend fun login(@Body icNumber: String, password: String): Response<UserData>
+    suspend fun login(@Body loginRequest: LoginRequest): Response<UserResponse>
+
+    companion object{
+        fun getApi() : UserRetrofit? {
+            return RetrofitHelper.client?.create(UserRetrofit::class.java)
+        }
+    }
 
 }

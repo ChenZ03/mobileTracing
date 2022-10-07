@@ -1,48 +1,36 @@
 package com.example.contacttracingproject.viewModel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import com.example.contacttracingproject.data.UserData
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.*
+import com.example.contacttracingproject.data.BaseResponse
+import com.example.contacttracingproject.data.EditRequest
+import com.example.contacttracingproject.data.UserResponse
+import com.example.contacttracingproject.models.User
 import com.example.contacttracingproject.repository.UserRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class EditProfileViewModel(val repository: UserRepository) : BaseViewModel() {
-    fun editProfile(icNumber1: String, newName: String, newPhone: String){
+class EditProfileViewModel(application: Application) : AndroidViewModel(application) {
+    val userRepo = UserRepository()
+    val editResult : MutableLiveData<BaseResponse<UserResponse>> = MutableLiveData()
+
+    fun editProfile(ic: String, username : String, phone : String){
+        editResult.value = BaseResponse.Loading()
+
         viewModelScope.launch {
-            val user = repository.getUser(icNumber1)
-            if(user != null) {
-                val updatedUser = user.body()
-                    ?.let { UserData(it._id, it.icNumber, it.password, newName, it.password, 0) }
-//                updateUser(updatedUser)
-//                _errorToast.emit("Edit Success")
-                _finish.value = true
-            }else{
-                _errorToast.emit("An error has occured")
-                _finish.value = false
+            try{
+                val editRequest = EditRequest(username, phone)
+                val response = userRepo.editProfile(ic, editRequest)
+                if (response?.code() == 200){
+                    editResult.value = BaseResponse.Success(response.body())
+                }else{
+                    editResult.value = BaseResponse.Error(response?.message())
+                }
             }
+            catch (e : Exception){
+                editResult.value = BaseResponse.Error(e.message)
+            }
+            Log.d("EditProfileViewModel", "editProfile: ${editResult.value}")
         }
-    }
-
-//    private fun updateUser(user: UserData?): Job =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.update(user)
-//        }
-//    private fun getUser(icNumber1: String): Job =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.getUser(icNumber.value.toString())
-//        }
-}
-
-class EditProfileViewModelFactory(
-    private  val repository: UserRepository): ViewModelProvider.Factory{
-    @Suppress("Unchecked_cast")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(EditProfileViewModel::class.java)) {
-            return EditProfileViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown View Model Class")
     }
 }
